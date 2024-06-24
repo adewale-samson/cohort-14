@@ -1,0 +1,26 @@
+/* .hero-container{
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin: 0 auto;
+}
+.img-container{
+    width: 500px;
+}
+.img-container img{
+    max-width: 100%;
+} */
+
+.hero-container{
+    width: 900px;
+    margin: auto;
+    display: flex;
+    border: 1px solid red;
+}
+
+
+@media screen and (max-width: 768px) {
+    .hero-container{
+        width: 90%;
+    }
+}

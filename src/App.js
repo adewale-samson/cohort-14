@@ -1,24 +1,31 @@
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar/Navbar';
+import Homepage from './Pages/Homepage/Homepage';
+import About from './Pages/About/About';
+import NotFound from './Pages/NotFound/NotFound';
+import Layout from './components/Layout/Layout';
+import Wale from './Pages/Wale/Wale';
+import Form from './Pages/Form/Form';
+import Signup from './Pages/Signup/Signup';
 
 function App() {
+  // const Saba = 'Man'
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Homepage />}/>
+          <Route path='about' element={<About />}/>
+          <Route path='wale' element={<Wale />}/>
+          <Route path='signup' element={<Signup />}/>
+          <Route path='*' element={<NotFound />}/>
+          <Route path='form' element={<Form />}/>
+        </Route>
+      </Routes>
+      {/* <Homepage /> */}
+    </BrowserRouter>
   );
 }
 
