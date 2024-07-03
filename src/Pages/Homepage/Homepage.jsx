@@ -26,10 +26,24 @@
 // export default Homepage
 
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Hero from '../../components/Hero/Hero'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Homepage = () => {
+  const [data, setData] = useState([])
+  const navigate = useNavigate()
+  // useEffect(() => {
+  //   axios.get('https://newsapi.org/v2/everything?q=tesla&from=2024-05-27&sortBy=publishedAt&apiKey=6c4f02d3895b4639b40c9ccd895bc885')
+  // .then(res => {
+  //   console.log(res);
+  //   setData(res.data.articles)
+  // })
+  // }, [])
+  const handleClick = (ele) => {
+    navigate('/about', {state: {ele: ele}})
+  }
   return (
     <div>
       <Hero />
@@ -37,6 +51,19 @@ const Homepage = () => {
     
       </div>
       {/* <Foodie /> */}
+
+      <div>
+        {data.map((ele, i) => {
+          console.log(ele)
+          return (
+            <div key={i}>
+              <h1>{ele.title}</h1>
+              <p>{ele.description}</p>
+              <button onClick={() => handleClick(ele)}>Read more</button>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
